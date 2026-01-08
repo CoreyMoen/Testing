@@ -129,8 +129,9 @@
       .excel-html-wrapper .waffle td,
       .excel-html-wrapper .waffle th {
         border: 0.5px solid #e1dfdd;
-        padding: 0.2em 0.4em;
+        padding: clamp(0.02em, 0.4vw, 0.2em) clamp(0.05em, 0.6vw, 0.4em) !important;
         white-space: nowrap;
+        line-height: clamp(0.9, 0.5 + 0.6vw, 1.4) !important;
       }
 
       .excel-html-wrapper .row-headers-background,
@@ -147,7 +148,7 @@
 
       /* Override ALL Google Sheets pt-based font sizes with em units */
       .excel-html-wrapper .waffle [class^="s"] {
-        padding: 0.15em 0.3em !important;
+        padding: clamp(0.02em, 0.4vw, 0.15em) clamp(0.05em, 0.6vw, 0.3em) !important;
       }
 
       /* Force all cells to inherit and scale proportionally */
@@ -247,14 +248,13 @@
         font-size: 0.75em !important;
       }
 
-      /* Scale row heights proportionally */
+      /* Scale row heights fluidly with viewport */
       .excel-html-wrapper .waffle tr {
         height: auto !important;
       }
 
       .excel-html-wrapper .waffle tr[style*="height"] {
-        height: auto !important;
-        min-height: 1.8em;
+        height: clamp(1em, 3vw, 4em) !important;
       }
 
       /* Scale column widths proportionally */
@@ -264,14 +264,14 @@
         min-width: 2em;
       }
 
-      /* Row header scaling */
+      /* Row header scaling - fluid line-height */
       .excel-html-wrapper .row-header-wrapper {
-        line-height: 1.4 !important;
+        line-height: 1 !important;
         font-size: 0.85em !important;
       }
 
       .excel-html-wrapper .row-header-wrapper[style*="line-height"] {
-        line-height: 1.4 !important;
+        line-height: 1 !important;
       }
 
       /* Sticky column headers (A, B, C, etc.) */
@@ -292,6 +292,7 @@
         left: 0;
         z-index: 5;
         background: #f3f2f1 !important;
+        height: auto !important;
       }
 
       /* Corner cell needs highest z-index */
